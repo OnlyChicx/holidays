@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  height: 100vh;
+  overflow-y: scroll;
+  padding-top: 50px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #e66465, #9198e5);
+}
+.box .title {
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #fff;
+  font-weight: 800;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #dbdada;
+  z-index: 99;
+}
+.box .item {
+  height: 200px;
+  margin: 20px 20px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.box .item .type {
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 30px;
+  font-weight: 600;
+  background-color: #e6e6e6;
+  position: relative;
+}
+.box .item .type::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 30px;
+  top: 5px;
+  left: 10px;
+  background-color: #a7a7a7;
+}
+.box .item .time {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box .item .time div {
+  display: flex;
+  align-items: baseline;
+}
+.box .item .time div .day,
+.box .item .time div .hour,
+.box .item .time div .minute {
+  font-size: 26px;
+}
+.box .item .time div .day-unit,
+.box .item .time div .hour-unit,
+.box .item .time div .minute-unit {
+  font-size: 14px;
+  margin: 0 4px;
+}
