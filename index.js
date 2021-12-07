@@ -64,11 +64,11 @@
       },
       {
         title: '元旦',
-        time: getDay('2022-01-01 00:00')
+        time: getDay('2022/01/01 00:00')
       },
       {
         title: '春节',
-        time: getDay('2022-02-01 00:00')
+        time: getDay('2022/02/01 00:00')
       }
     ]
 
@@ -94,7 +94,7 @@
       item.appendChild(type)
       item.appendChild(time)
 
-      type.onclick = () => {
+      type.touchend = () => {
         const canvas = getCanvasImage(list[i])
 
         const saveUrl = canvas.toDataURL('image/png')
