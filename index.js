@@ -94,7 +94,7 @@
       item.appendChild(type)
       item.appendChild(time)
 
-      type.touchend = () => {
+      type.addEventListener('touchstart', () => {
         const canvas = getCanvasImage(list[i])
 
         const saveUrl = canvas.toDataURL('image/png')
@@ -104,7 +104,7 @@
         a.href = saveUrl
         a.download = 'heihei'
         a.click()
-      }
+      })
 
       box.appendChild(item)
     }
