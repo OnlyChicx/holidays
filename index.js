@@ -94,6 +94,18 @@
       item.appendChild(type)
       item.appendChild(time)
 
+      type.onclick = () => {
+        const canvas = getCanvasImage(list[i])
+
+        const saveUrl = canvas.toDataURL('image/png')
+
+        const a = document.createElement('a')
+
+        a.href = saveUrl
+        a.download = 'heihei'
+        a.click()
+      }
+
       box.appendChild(item)
     }
   }
@@ -107,6 +119,67 @@
   window.onunload = () => {
     timer = null
   }
+
+  /**
+   * 开始
+   */
+  const getCanvasImage = item => {
+    const canvas = document.createElement('canvas')
+    const width = 300
+    const height = 200
+    const radius = 8
+
+    canvas.width = width
+    canvas.height = height
+
+    const ctx = canvas.getContext('2d')
+
+    ctx.strokeStyle = '#FFFFFF'
+
+    ctx.beginPath()
+    ctx.moveTo(radius, 0)
+    ctx.lineTo(width - radius, 0)
+    ctx.arc(width - radius, radius, radius, Math.PI * 3 / 2, Math.PI * 2)
+    ctx.lineTo(width, height - radius)
+    ctx.arc(width - radius, height - radius, radius, 0, Math.PI / 2)
+    ctx.lineTo(radius, height)
+    ctx.arc(radius, height - radius, radius, Math.PI / 2, Math.PI)
+    ctx.lineTo(0, radius)
+    ctx.arc(radius, radius, radius, Math.PI, Math.PI * 3 / 2)
+    ctx.closePath()
+    // ctx.stroke()
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fill()
+
+    ctx.fillStyle = 'rgb(230, 230, 230)'
+    ctx.fillRect(16, 16, width - 16 * 2, 40)
+
+    ctx.fillStyle = 'rgb(167, 167, 167)'
+    ctx.fillRect(28, 21, 10, 30)
+
+    console.log(ctx.font)
+    ctx.fillStyle = 'black'
+    ctx.font = '18px blod sans-serif'
+    ctx.fillText(item.title, 50, 41)
+
+    ctx.font = '26px sans-serif'
+
+    const time = item.time
+    ctx.fillText(time.day, time.day > 9 ? 70 : 85, 120)
+    ctx.fillText(time.hour, 120, 120)
+    ctx.fillText(time.minute, time.hour > 9 ? 180 : 165, 120)
+
+    ctx.font = '14px sans-serif'
+    ctx.fillText('天', 100, 120)
+    ctx.fillText('小时', time.hour > 9 ? 150 : 135, 120)
+    ctx.fillText('分钟', 180 + (time.hour > 9 ? 15 : 0) + (time.minute > 9 ? 15 : 0), 120)
+
+    return canvas
+
+  }
+  /**
+   * 结束
+   */
 
   /**
    * 笨蛋看源码
