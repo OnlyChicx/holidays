@@ -21,6 +21,7 @@
     return spanEle
   }
 
+  // 获取到本周末时间
   const getWeekDay = () => {
     const nowDate = new Date()
     const nowDay = nowDate.getDay()
@@ -31,6 +32,20 @@
       day: 5 - nowDay,
       hour: Math.floor(nextWeekDay / (1000 * 60 * 60)),
       minute: Math.ceil((nextWeekDay % (1000 * 60 * 60)) / (1000 * 60))
+    }
+  }
+  
+  // 获取到元旦时间
+  const getDay = target => {
+    const nowDate = new Date()
+    const oneOneDay = new Date(target)
+
+    const nextOneOneDay = oneOneDay - nowDate
+
+    return {
+      day: Math.floor(nextOneOneDay / (1000 * 60 * 60 * 24)),
+      hour: Math.floor((nextOneOneDay % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minute: Math.ceil((nextOneOneDay % (1000 * 60 * 60 * 24) % (1000 * 60 * 60)) / (1000 * 60)),
     }
   }
 
@@ -46,6 +61,14 @@
       {
         title: '周末',
         time: getWeekDay()
+      },
+      {
+        title: '元旦',
+        time: getDay('2022-01-01 00:00')
+      },
+      {
+        title: '春节',
+        time: getDay('2022-02-01 00:00')
       }
     ]
 
@@ -79,7 +102,7 @@
 
   let timer = window.setInterval(() => {
     genearateItem()
-  }, 2000)
+  }, 30000)
 
   window.onunload = () => {
     timer = null

@@ -5,7 +5,7 @@
 .box {
   height: 100vh;
   overflow-y: scroll;
-  padding-top: 50px;
+  padding: 50px 0;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #e66465, #9198e5);
 }
