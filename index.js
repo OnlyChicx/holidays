@@ -53,7 +53,7 @@
     box.innerHTML = ''
 
     const title = createDiv('title')
-    title.innerHTML = 'HAPPY HOLYDAYS'
+    title.innerHTML = 'HAPPY HOLIDAYS'
 
     box.appendChild(title)
 
@@ -64,11 +64,11 @@
       },
       {
         title: '元旦',
-        time: getDay('2022/01/01 00:00')
+        time: getDay('2022/01/01 00:00:00')
       },
       {
         title: '春节',
-        time: getDay('2022/02/01 00:00')
+        time: getDay('2022/02/01 00:00:00')
       }
     ]
 
